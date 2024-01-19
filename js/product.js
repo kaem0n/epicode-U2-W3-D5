@@ -9,6 +9,8 @@ const brandInput = document.getElementById('brand')
 const descriptionInput = document.getElementById('description')
 const imageInput = document.getElementById('image')
 const priceInput = document.getElementById('price')
+const main = document.getElementsByTagName('main')[0]
+const spinner = document.getElementById('spinner')
 
 // Variables
 
@@ -28,6 +30,7 @@ const pageLoad = function () {
   })
     .then((res) => {
       if (res.ok) {
+        spinner.classList.add('d-none')
         return res.json()
       } else {
         throw new Error(res.status)

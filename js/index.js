@@ -1,9 +1,11 @@
 // localStorage
 
-localStorage.setItem(
-  'apikey',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFhNTMwNDE4N2U1YzAwMTgxNGM2OWUiLCJpYXQiOjE3MDU2NjExODgsImV4cCI6MTcwNjg3MDc4OH0.ii9Cgp-ciQLSUampuatWO4LQ8oKStYp3XmN0mvGpPnA'
-)
+if (localStorage.getItem('apikey') === null) {
+  localStorage.setItem(
+    'apikey',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFhNTMwNDE4N2U1YzAwMTgxNGM2OWUiLCJpYXQiOjE3MDU2NjExODgsImV4cCI6MTcwNjg3MDc4OH0.ii9Cgp-ciQLSUampuatWO4LQ8oKStYp3XmN0mvGpPnA'
+  )
+}
 localStorage.setItem(
   'apiUrl',
   'https://striveschool-api.herokuapp.com/api/product/'
@@ -13,6 +15,8 @@ localStorage.setItem(
 
 const row = document.getElementById('card-row')
 const mainSection = document.getElementsByTagName('section')[0]
+const main = document.getElementsByTagName('main')[0]
+const spinner = document.getElementById('spinner')
 
 // Variables
 
@@ -29,6 +33,7 @@ const pageLoad = function () {
   })
     .then((res) => {
       if (res.ok) {
+        spinner.classList.add('d-none')
         return res.json()
       } else {
         throw new Error(res.status)

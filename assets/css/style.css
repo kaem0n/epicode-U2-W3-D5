@@ -2,4 +2,6 @@
 
 .navbar-brand {
   font-family: 'Nova Mono', monospace;
+  color: rgb(13, 110, 253);
+  fill: rgb(13, 110, 253);
 }
